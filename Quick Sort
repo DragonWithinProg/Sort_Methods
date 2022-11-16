@@ -7,7 +7,7 @@ high = 22
 data = [randint(low,high) for a in range(low,high)]                     # Создание списка случайных значений с повторами по заданным параметрам
 print(f"Исходный неотсортированный список: {data}")
 
-def quicksort(nums, fst, lst):
+def quickSort(nums, fst, lst):
     if fst >= lst: 
         return
     i, j = fst, lst                                                     
@@ -19,9 +19,9 @@ def quicksort(nums, fst, lst):
             nums[i], nums[j] = nums[j], nums[i]
             i, j = i + 1, j - 1
             print(f"Итерация процесса сортировки: {data}")
-    quicksort(nums, fst, j)                                             # Одновременная сортировка подмассивов с помощью рекурсии
-    quicksort(nums, i, lst)
+    quickSort(nums, fst, j)                                             # Одновременная сортировка подмассивов с помощью рекурсии
+    quickSort(nums, i, lst)
         
 
-quicksort(data,0,20)
+quickSort(data,0,20)
 print(f"Результат сортировки: {data}")

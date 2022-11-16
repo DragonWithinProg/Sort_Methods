@@ -1,0 +1,25 @@
+from random import randint
+
+low = 1                                                                 # Введение парамметров для списка: нижняя и верхняя граница значений
+high = 22
+
+data = [randint(low,high) for a in range(low,high)]                     # Создание списка случайных значений с повторами по заданным параметрам
+print(f"Исходный неотсортированный список: {data}")
+
+def combsort(data):                                                     
+    step = int(len(data)/1.247)                                         # Введение второго итератора, который зависит от эмперического числа 1.247
+    swap = 1
+    while step > 1 or swap > 0:
+        swap = 0
+        i = 0
+        while i + step < len(data):                                     # Изменение индексов у элементов с большими отклонениями 
+            if data[i] > data[i+step]:
+                data[i], data[i+step] = data[i+step], data[i]
+                swap += 1
+            i += 1
+        if step > 1:
+            step = int(step / 1.247)
+            print(f"Итерация процесса сортировки: {data}")
+
+combsort(data)
+print(f"Результат сортировки: {data}")

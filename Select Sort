@@ -1,0 +1,20 @@
+from random import randint
+
+low = 1                                                                 # Введение парамметров для списка: нижняя и верхняяя граница значений
+high = 22
+
+data = [randint(low,high) for a in range(low,high)]                     # Создание списка случайных значений с повторами по заданным параметрам
+print(f"Исходный неотсортированный список: {data}")
+
+def selectionSort(data):
+    for scanIndex in range(len(data)):
+        minIndex = scanIndex
+        for compIndex in range(scanIndex + 1, len(data)):               # Создание цикла, который находит наименьшее значение 
+            if data[compIndex] < data[minIndex]:
+                minIndex = compIndex
+            if minIndex != scanIndex:                                   # Измение индекса у наименьшего значения
+                    data[scanIndex], data[minIndex] = data[minIndex], data[scanIndex]
+        print(f"Итерация процесса сортировки: {data}")
+ 
+selectionSort(data)
+print(f"Результат сортировки: {data}")

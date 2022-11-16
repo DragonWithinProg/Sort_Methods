@@ -1,0 +1,27 @@
+import random
+from random import randint
+
+low = 1                                                                 # Введение парамметров для списка: нижняя и верхняя граница значений
+high = 22
+
+data = [randint(low,high) for a in range(low,high)]                     # Создание списка случайных значений с повторами по заданным параметрам
+print(f"Исходный неотсортированный список: {data}")
+
+def quicksort(nums, fst, lst):
+    if fst >= lst: 
+        return
+    i, j = fst, lst                                                     
+    pivot = nums[random.randint(fst, lst)]                              # Создание подмассива с нижней и верхней границами(fst, lst)
+    while i <= j:
+        while nums[i] < pivot: i += 1
+        while nums[j] > pivot: j -= 1
+        if i <= j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i, j = i + 1, j - 1
+            print(f"Итерация процесса сортировки: {data}")
+    quicksort(nums, fst, j)                                             # Одновременная сортировка подмассивов с помощью рекурсии
+    quicksort(nums, i, lst)
+        
+
+quicksort(data,0,20)
+print(f"Результат сортировки: {data}")

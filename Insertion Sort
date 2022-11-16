@@ -1,0 +1,21 @@
+from random import randint
+
+low = 1                                                                 # Введение парамметров для списка: нижняя и верхняяя граница значений
+high = 22
+
+data = [randint(low,high) for a in range(low,high)]                     # Создание списка случайных значений с повторами по заданным параметрам
+print(f"Исходный неотсортированный список: {data}")
+
+def insertionSort(data):
+    for scanIndex in range(len(data)):                                  # Создание цикла, проходящего по индексам списка        
+        tmp = data[scanIndex]
+        minIndex = scanIndex
+        while minIndex > 0 and data[minIndex - 1] > tmp:                # Условие, при котором меньшие значения меняют свой индекс
+            data[minIndex] = data[minIndex - 1]
+            minIndex -= 1
+        data[minIndex] = tmp
+        print(f"Итерация процесса сортировки: {data}")
+ 
+insertionSort(data)
+print(f"Результат сортировки: {data}")
+        
